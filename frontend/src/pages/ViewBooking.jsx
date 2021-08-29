@@ -55,7 +55,7 @@ function ViewBooking() {
         </div>
 
         {!(input.phone && input.phone.length === 10) ? (
-          <div className="view-body">None</div>
+          <div className="view-body"></div>
         ) : (
           <div className="view-body">
             <div
