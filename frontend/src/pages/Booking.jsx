@@ -323,6 +323,7 @@ function Booking() {
                               ></input>
                             ) : (
                               <input
+                                id="choose-personnel"
                                 type="button"
                                 onClick={(e) => StaffClick(e)}
                                 className="text-btn"
@@ -364,7 +365,7 @@ function Booking() {
                               ? calendar &&
                                 calendar.map((calendar) => (
                                   <div className="time-content">
-                                    {compareTime("23:00") ? (
+                                    {compareTime(calendar) ? (
                                       <input
                                         type="button"
                                         id="time"
@@ -387,7 +388,7 @@ function Booking() {
                                     staff.time &&
                                     staff.time.map((time) => (
                                       <div className="time-content">
-                                        {compareTime("23:00") ? (
+                                        {compareTime(time) ? (
                                           <input
                                             type="button"
                                             id="time"
