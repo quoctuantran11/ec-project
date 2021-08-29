@@ -1,0 +1,51 @@
+.branch-card {
+    text-align: center;
+    margin-bottom: 30px;
+
+    &__image {
+        position: relative;
+        margin-bottom: 30px;
+
+        img {
+            width: 250px;
+            height: 220px;
+            border-radius: 5px;
+            transition: all .5s;
+
+            @include tablet{
+                height: 200px;
+                width: 220px;
+            }
+
+            @include mobile{
+                height: 120px;
+                width: 140px;
+            }
+        }
+
+        &:hover img {
+            filter: brightness(65%);
+        }
+    }
+
+    &__info {
+        &__name {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+
+            @include mobile{
+                font-size: 1.5rem;
+            }
+        }
+
+        &__description {
+            font-size: 1.25rem;
+            color: $txt-second-color;
+
+            @include mobile{
+                font-size: 1.25rem;
+            }
+        }
+    }
+}

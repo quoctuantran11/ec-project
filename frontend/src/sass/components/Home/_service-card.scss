@@ -1,0 +1,50 @@
+.service-card {
+    @include flex(center, flex-start);
+    padding: 40px;
+    padding-left: 10px;
+    padding-right: 20px;
+    border-radius: 10px;
+    box-shadow: $box-shadow;
+    transition: transform 0.5s ease;
+
+    &:hover {
+        transform: translateY(-10px);
+    }
+
+    &__image {
+        @include flex(center, flex-start);
+        position: relative;
+        width: 50%;
+
+        img {
+            position: absolute;
+            height: 100px;
+            width: 100px;
+            border-radius: 3px;
+
+            @include tablet{
+                height: 100px;
+                width: 100px;
+            }
+
+            @include mobile{
+                height: 100px;
+                width: 100px;
+            }
+        }
+    }
+
+    &__info {
+        // margin-left: 20px;
+        &__name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        &__description {
+            font-size: 1.25rem;
+            color: $txt-second-color;
+        }
+    }
+}

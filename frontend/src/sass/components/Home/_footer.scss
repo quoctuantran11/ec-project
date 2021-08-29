@@ -1,0 +1,66 @@
+.footer {
+    padding-top: 70px;
+    box-shadow: $box-shadow;
+    font-size: 1.25rem;
+    background-color: #ffe4e4;
+
+    &__logo {
+        margin-top: -50px;
+        margin-left: -35px;
+        height: 200px;
+    }
+
+    &__social-item{
+        font-size: 1.5rem;
+        margin-top: -30px;
+        margin-bottom: 20px;
+        color: rgb(128, 128, 128);
+
+        i{
+            margin-right: 20px;
+        }
+
+        .fb:hover{
+            color: #2f6ae9;
+        }
+
+        .ins:hover{
+            color: #dd6161;
+        }
+
+        .ytb:hover{
+            color: #B31217;
+        }
+    }
+
+    &__app-cash-item{
+        margin-right: 20px;
+    }
+
+    &__title {
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        font-weight: 600;
+    }
+
+    &__content {
+        p {
+            margin-bottom: 1.25rem;
+        }
+    }
+
+    &__bottom{
+        @include flex(center,center);
+        padding: 10px;
+    }
+
+    &__app-badge-item{
+        width: 120px;
+        margin-right: 20px;
+    }
+
+    &__hotline-icon{
+        align-items: center;
+        width: 120px;
+    }
+}

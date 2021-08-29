@@ -1,0 +1,32 @@
+@import "./variables";
+@import "./mixins";
+@import "./base";
+
+@import "./components/button";
+@import "./components/section";
+@import "./components/booking-btn";
+@import "./components/banner-top";
+
+@import "./pages/booking";
+
+@import "./components/Home/banner";
+@import "./components/Home/header";
+@import "./components/Home/footer";
+@import "./components/Home/service-card";
+@import "./components/Home/branch-card";
+@import "./components/Home/thematic-card";
+@import "./components/Home/voucher";
+
+
+@import "./components/Services/service-info";
+@import "./components/Services/service-box";
+@import "./components/Services/top-section";
+
+
+@import "./components/Services/service-info";
+@import "./components/Services/service-box";
+@import "./components/Services/top-section";
+
+@import "./components/Membership/membership-info";
+@import "./components/Membership/membership-box";
+@import "./components/Membership/memtop-section";

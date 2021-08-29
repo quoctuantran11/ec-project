@@ -1,0 +1,42 @@
+.memtop-section{
+    @include flex(flex-start,space-between);
+    padding: 40px;
+
+    @include mobile{
+        @include flex(center,space-between);
+        padding: 10px;
+    }
+
+    &__info{
+        width: 65%;
+
+        &__title{
+            color: blueviolet;
+            font-size: 4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+
+            @include mobile{
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+        }
+
+        &__description{
+            font-size: 1.35rem;
+            font-weight: 100;
+            color: $txt-second-color;
+            line-height: 1.8;
+            font-style: italic;
+            text-align: justify;
+
+            @include mobile{
+                font-size: 1rem;
+            }
+        }
+    }
+
+    &__img{
+        width: 30%;
+    }
+}

@@ -1,0 +1,68 @@
+html{
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.text-field,
+.auto-complete{
+    width: 400px;
+}
+
+:root{
+    --text-color: black;
+    --nav-color1: #A1C3D1;
+    --nav-color2: #B39BC8;
+    --nav-color3: #F0EBF4;
+    --nav-color4: #F172A1;
+    --nav-color5: #E64398;
+}
+
+#choose-personnel{
+    padding: 10px;
+    background: var(--nav-color3) !important;
+}
+
+.booking-container{
+    background-color: var(--nav-color1);
+    margin: auto !important;
+    max-width: 500px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.booking-header{
+    background: var(--nav-color2);
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.booking-body-1{
+    background: var(--nav-color4);
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.booking-body-2{
+    background: var(--nav-color2);
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.booking-body-3{
+    background: var(--nav-color4);
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

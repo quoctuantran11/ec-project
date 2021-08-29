@@ -1,0 +1,115 @@
+html{
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.text-field,
+.auto-complete{
+    width: 400px;
+}
+
+:root{
+    --text-color: black;
+    --nav-color1: rgba(232, 232, 232, 0.2);
+    --nav-color2: #B39BC8;
+    --nav-color3: #F0EBF4;
+    --nav-color4: #F172A1;
+    --nav-color5: #E64398;
+    --bg-booking: #eeeeee;
+}
+
+#choose-personnel{
+    padding: 10px;
+    background: var(--nav-color3) !important;
+}
+
+.book-container{
+    background: var(--bg-booking);
+    width: 111.5%;
+    margin-left: -70px;
+    margin-bottom: -25px;
+
+    @include tablet{
+        height: 100%;
+    }
+
+    @include mobile{
+        margin-left: -10px;
+    }
+}
+
+.booking-container{
+    background-color: $main-bg;
+    margin: auto !important;
+    max-width: 500px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.booking-header{
+    background: var(--nav-color1);
+    padding: 20px 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.booking-body-1{
+    background: $main-bg;
+    padding: 30px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+}
+
+.booking-title{
+    font-size: 1.25rem;
+    font-weight: 600;
+
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.booking-body-1 .booking-context{
+    margin-left: 20px;
+}
+
+.booking-body-1 .booking-context .auto-complete{
+   width: 460px;
+}
+
+
+.booking-body-2{
+    background: $main-bg;
+    padding-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.booking-body-2 .text-field{
+    margin-left: 20px;
+    width: 460px;
+}
+
+
+.booking-body-3{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-submit{
+    padding: 20px 50px;
+    color: var(--nav-color1);
+}
