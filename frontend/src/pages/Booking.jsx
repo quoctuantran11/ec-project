@@ -474,6 +474,7 @@ function DisplayService() {
 
   // state for saving choices
   const [value, setValue] = useState([""]);
+  const [value2, setValue2] = useState([""]);
   const [count, setCount] = useState(0);
 
   // function for checkboxes options (set new option & status states)
@@ -482,6 +483,14 @@ function DisplayService() {
       setValue([...value, event.target.name]);
     } else {
       setValue((prev) => prev.filter((cur) => cur !== event.target.name));
+    }
+  };
+
+  const checkboxChange2 = (event) => {
+    if (event.target.checked) {
+      setValue2([...value2, event.target.name]);
+    } else {
+      setValue2((prev) => prev.filter((cur) => cur !== event.target.name));
     }
   };
 
@@ -532,7 +541,7 @@ function DisplayService() {
   var phone = query.get("phone");
   var salonId = query.get("salonId");
 
-  function CleaningArr() {
+  function CleaningArr(value) {
     var cleanVal = value.filter(function (el) {
       return el;
     })
@@ -577,8 +586,9 @@ function DisplayService() {
   const handlePickClick = (event) => {
     event.preventDefault();
 
-    var newVal = CleaningArr()
-    setOption([...option, newVal, opt1, opt2, opt3]);
+    var newVal = CleaningArr(value)
+    var newVal2 = CleaningArr(value2)
+    setOption([...option, newVal, newVal2, opt1, opt2, opt3]);
 
     setService(false);
 
@@ -727,17 +737,17 @@ function DisplayService() {
                         <FormGroup>
                           <FormControlLabel
                             name="Acrylic or Gel Removal"
-                            control={<Checkbox onChange={checkboxChange} />}
+                            control={<Checkbox onChange={checkboxChange2} />}
                             label="Acrylic or Gel Removal"
                           />
                           <FormControlLabel
                             name="Gel Polish Change"
-                            control={<Checkbox onChange={checkboxChange} />}
+                            control={<Checkbox onChange={checkboxChange2} />}
                             label="Gel Polish Change"
                           />
                           <FormControlLabel
                             name="Fill Pink"
-                            control={<Checkbox onChange={checkboxChange} />}
+                            control={<Checkbox onChange={checkboxChange2} />}
                             label="Fill Pink"
                           />
                         </FormGroup>
@@ -784,14 +794,14 @@ function DisplayService() {
                     </div>
                   ) : null}
 
-                  {count + value.length - 1 > 0 ? (
-                    count + value.length - 1 > 1 ? (
+                  {count + (value.length - 1) + (value2.length - 1) > 0 ? (
+                    count + (value.length - 1) + (value2.length - 1) > 1 ? (
                       <button
                         id="pick-btn"
                         onClick={handlePickClick}
                         className="btn btn-success"
                       >
-                        {count + value.length - 1} services
+                        {count + (value.length - 1) + (value2.length - 1)} services
                       </button>
                     ) : (
                       <button
@@ -799,7 +809,7 @@ function DisplayService() {
                         onClick={handlePickClick}
                         className="btn btn-success"
                       >
-                        {count + value.length - 1} service
+                        {count + (value.length - 1) + (value2.length - 1)} service
                       </button>
                     )
                   ) : (
@@ -809,7 +819,7 @@ function DisplayService() {
                       disabled
                       className="btn btn-secondary"
                     >
-                      {count + value.length - 1} service
+                      {count + (value.length - 1) + (value2.length - 1)} service
                     </button>
                   )}
                 </div>
