@@ -40,10 +40,11 @@ const useDate = () => {
     };
   }, []);
 
+  const date = today.getDate()
   const hour = today.getHours();
   const minutes = today.getMinutes();
 
-  return { hour, minutes };
+  return { date, hour, minutes };
 };
 
 function Booking() {
@@ -75,7 +76,7 @@ function Booking() {
   const [calendar, setCalendar] = useState("");
   const [staffTime, setStaffTime] = useState("");
   const [time, setTime] = useState("");
-  const { hour, minutes } = useDate();
+  const { date, hour, minutes } = useDate();
 
   var Staffsettings = {
     infinite: true,
@@ -119,6 +120,16 @@ function Booking() {
     });
   }
 
+  function CleaningArr() {
+    var cleanOpt = option.filter(function (el) {
+      return el;
+    })
+
+    return cleanOpt;
+  }
+
+  console.log(CleaningArr())
+
   function StaffClick(event) {
     event.preventDefault();
 
@@ -148,16 +159,24 @@ function Booking() {
   const compareTime = (timeDisplay) => {
     const components = timeDisplay.split(":");
 
-    if (components[0] > hour) {
-      return true;
-    } else if (components[0] === hour) {
-      if (components[1] > minutes) {
+    if(startDate.getDate() === date) {
+      if (components[0] > hour) {
         return true;
-      } else {
+      }
+      else if (components[0] === hour) {
+        if (components[1] > minutes) {
+          return true;
+        }
+        else {
+          return false;
+        }
+      } 
+      else {
         return false;
       }
-    } else {
-      return false;
+    }
+    else {
+      return true;
     }
   };
 
@@ -290,12 +309,10 @@ function Booking() {
                       </button>
 
                       <div className="service-selected">
-                        {Object.keys(option).map((obj) =>
-                          option[obj] !== "" ? (
+                        {Object.keys(CleaningArr()).map((obj) =>
                             <div className="serviceName">
-                              <span>{option[obj]}</span>
+                              <span>{CleaningArr()[obj]}</span>
                             </div>
-                          ) : null
                         )}
                       </div>
 
@@ -444,16 +461,16 @@ function Booking() {
 function DisplayService() {
   // using Context for render overlay
   const [[setService], [option, setOption]] = useContext(DisplayContext);
-
-  // state for passing service that have been chose
+  
+  // states for passing service that have been chose
   const [opt1, setOpt1] = useState("");
   const [opt2, setOpt2] = useState("");
   const [opt3, setOpt3] = useState("");
 
   // states for categories render overlay
-  const [manicure, setManicure] = useState(true);
+  const [manicure, setManicure] = useState(false);
   const [pedicure, setPedicure] = useState(false);
-  const [eyelid, setEyelid] = useState(false);
+  const [combo, setCombo] = useState(false);
 
   // state for saving choices
   const [value, setValue] = useState([""]);
@@ -472,43 +489,38 @@ function DisplayService() {
   const choicesClick1 = (event) => {
     if (opt1 === event.target.value) {
       setOpt1("");
-      setValue((prev) => prev.filter((cur) => cur !== event.target.name));
       setCount(count - 1);
     } else {
       setOpt1(event.target.value);
-      setValue([...value, event.target.name]);
-      setCount(count + 1);
+      if(opt1 === '') {
+        setCount(count + 1);
+      }
     }
   };
 
   const choicesClick2 = (event) => {
     if (opt2 === event.target.value) {
       setOpt2("");
-      setValue((prev) => prev.filter((cur) => cur !== event.target.name));
       setCount(count - 1);
     } else {
       setOpt2(event.target.value);
-      setValue([...value, event.target.name]);
-      setCount(count + 1);
+      if(opt2 === '') {
+        setCount(count + 1);
+      }
     }
   };
 
   const choicesClick3 = (event) => {
     if (opt3 === event.target.value) {
       setOpt3("");
-      setValue((prev) => prev.filter((cur) => cur !== event.target.name));
       setCount(count - 1);
     } else {
       setOpt3(event.target.value);
-      setValue([...value, event.target.name]);
-      setCount(count + 1);
+      if(opt3 === '') {
+        setCount(count + 1);
+      }
     }
   };
-
-  console.log(value);
-
-  console.log(value.length - 1);
-  console.log(count + value.length - 1);
 
   let history = useHistory();
 
@@ -520,25 +532,33 @@ function DisplayService() {
   var phone = query.get("phone");
   var salonId = query.get("salonId");
 
+  function CleaningArr() {
+    var cleanVal = value.filter(function (el) {
+      return el;
+    })
+
+    return cleanVal;
+  }
+
   const ManiClick = (event) => {
     event.preventDefault();
     setManicure(true);
     setPedicure(false);
-    setEyelid(false);
+    setCombo(false);
   };
 
   const PediClick = (event) => {
     event.preventDefault();
     setManicure(false);
     setPedicure(true);
-    setEyelid(false);
+    setCombo(false);
   };
 
-  const EyelidClick = (event) => {
+  const ComboClick = (event) => {
     event.preventDefault();
     setManicure(false);
     setPedicure(false);
-    setEyelid(true);
+    setCombo(true);
   };
 
   // function for handling back button
@@ -557,10 +577,10 @@ function DisplayService() {
   const handlePickClick = (event) => {
     event.preventDefault();
 
-    setOption([...option, value, opt1, opt2, opt3]);
+    var newVal = CleaningArr()
+    setOption([...option, newVal, opt1, opt2, opt3]);
 
     setService(false);
-    // setOption(value)
 
     history.push({
       pathname: "/booking",
@@ -609,11 +629,11 @@ function DisplayService() {
                     <span>Pedicure</span>
                   </button>
                   <button
-                    onClick={(e) => EyelidClick(e)}
+                    onClick={(e) => ComboClick(e)}
                     className="cate-btn"
-                    value="eyelid"
+                    value="combo"
                   >
-                    <span>EyeLid</span>
+                    <span>Combo</span>
                   </button>
                 </div>
                 <div className="category-content">
@@ -623,14 +643,14 @@ function DisplayService() {
                         <FormLabel component="legend"></FormLabel>
                         <RadioGroup name="manicure" value={opt1}>
                           <FormControlLabel
-                            value="Nail draw"
+                            value="Aura Manicure"
                             control={<Radio onClick={choicesClick1} />}
-                            label="Nail draw"
+                            label="Aura Manicure"
                           />
                           <FormControlLabel
-                            value="Polish draw"
+                            value="Basic Manicure"
                             control={<Radio onClick={choicesClick1} />}
-                            label="Polish draw"
+                            label="Basic Manicure"
                           />
                           <FormControlLabel
                             value="Express manicure"
@@ -654,38 +674,38 @@ function DisplayService() {
                         <FormLabel component="legend"></FormLabel>
                         <RadioGroup name="pedicure" value={opt2}>
                           <FormControlLabel
-                            value="Gel color remove"
+                            value="Island Pedicure"
                             control={<Radio onClick={choicesClick2} />}
-                            label="Gel color remove"
+                            label="Island Pedicure"
                           />
                           <FormControlLabel
-                            value="Polish draw"
+                            value="Orange Peel Pedicure"
                             control={<Radio onClick={choicesClick2} />}
-                            label="Polish draw"
+                            label="Orange Peel Pedicure"
                           />
                           <FormControlLabel
-                            value="other"
+                            value="Pumpkin Pedicure"
                             control={<Radio onClick={choicesClick2} />}
-                            label="Other"
+                            label="Pumpkin Pedicure"
                           />
                         </RadioGroup>
                       </FormControl>
                     </div>
                   ) : null}
-                  {eyelid ? (
+                  {combo ? (
                     <div className="category-content">
                       <FormControl component="fieldset">
                         <FormLabel component="legend"></FormLabel>
-                        <RadioGroup name="eyelid" value={opt3}>
+                        <RadioGroup name="combo" value={opt3}>
                           <FormControlLabel
-                            value="Eyelid draw"
+                            value="Basic Mani / Basic Pedi Combo"
                             control={<Radio onClick={choicesClick3} />}
-                            label="Eyelid draw"
+                            label="Basic Mani / Basic Pedi Combo"
                           />
                           <FormControlLabel
-                            value="other"
+                            value="Basic Mani / Express Pedi Combo"
                             control={<Radio onClick={choicesClick3} />}
-                            label="Other"
+                            label="Basic Mani / Exxpress Pedi Combo"
                           />
                         </RadioGroup>
                       </FormControl>

@@ -81,8 +81,8 @@ const Home = () => {
         <SectionTitle>Branch System</SectionTitle>
         <SectionBody>
           <SectionSubTitle>
-            Open time: Mon - Fri (8:00AM - 6:30PM) <br /> Weekends (9:00AM -
-            5:00PM)
+            Open time: Mon - Fri (8:00AM - 8:00PM) <br /> Weekends (9:00AM -
+            7:00PM)
           </SectionSubTitle>
           <Grid col={4} mdCol={4} smCol={2} gap={10}>
             {branches.map((item, index) => (
