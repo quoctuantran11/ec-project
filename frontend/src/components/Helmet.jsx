@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Helmet = (props) => {
-  document.title = "Eternal Charm | " + props.title;
+  document.title = "Alo build Eternal Charm | " + props.title;
 
   return <div>{props.children}</div>;
 };
