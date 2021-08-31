@@ -657,12 +657,32 @@ function DisplayService() {
                             control={<Radio onClick={choicesClick1} />}
                             label="Express Manicure"
                           />
+                          <FormControlLabel
+                            value="Shellac manicure"
+                            control={<Radio onClick={choicesClick1} />}
+                            label="Shellac Manicure"
+                          />
+                          <FormControlLabel
+                            value="Signature manicure"
+                            control={<Radio onClick={choicesClick1} />}
+                            label="Signature Manicure"
+                          />
                         </RadioGroup>
                         <FormGroup>
                           <FormControlLabel
-                            name="Nail enhance"
+                            name="Acrylic or Gel Removal"
                             control={<Checkbox onChange={checkboxChange} />}
-                            label="Nail enhance"
+                            label="Acrylic or Gel Removal"
+                          />
+                          <FormControlLabel
+                            name="Polish Change"
+                            control={<Checkbox onChange={checkboxChange} />}
+                            label="Polish Change"
+                          />
+                          <FormControlLabel
+                            name="Fill Pink"
+                            control={<Checkbox onChange={checkboxChange} />}
+                            label="Fill Pink"
                           />
                         </FormGroup>
                       </FormControl>
@@ -688,7 +708,39 @@ function DisplayService() {
                             control={<Radio onClick={choicesClick2} />}
                             label="Pumpkin Pedicure"
                           />
+                          <FormControlLabel
+                            value="Basic Pedicure"
+                            control={<Radio onClick={choicesClick2} />}
+                            label="Basic Pedicure"
+                          />
+                          <FormControlLabel
+                            value="Express Pedicure"
+                            control={<Radio onClick={choicesClick2} />}
+                            label="Express Pedicure"
+                          />
+                          <FormControlLabel
+                            value="Little Princess Pedicure"
+                            control={<Radio onClick={choicesClick2} />}
+                            label="Little Princess Pedicure"
+                          />
                         </RadioGroup>
+                        <FormGroup>
+                          <FormControlLabel
+                            name="Acrylic or Gel Removal"
+                            control={<Checkbox onChange={checkboxChange} />}
+                            label="Acrylic or Gel Removal"
+                          />
+                          <FormControlLabel
+                            name="Gel Polish Change"
+                            control={<Checkbox onChange={checkboxChange} />}
+                            label="Gel Polish Change"
+                          />
+                          <FormControlLabel
+                            name="Fill Pink"
+                            control={<Checkbox onChange={checkboxChange} />}
+                            label="Fill Pink"
+                          />
+                        </FormGroup>
                       </FormControl>
                     </div>
                   ) : null}
@@ -706,6 +758,26 @@ function DisplayService() {
                             value="Basic Mani / Express Pedi Combo"
                             control={<Radio onClick={choicesClick3} />}
                             label="Basic Mani / Exxpress Pedi Combo"
+                          />
+                          <FormControlLabel
+                            value="Orange Peel Pedicure and Basic Manicure"
+                            control={<Radio onClick={choicesClick3} />}
+                            label="Orange Peel Pedicure and Basic Manicure"
+                          />
+                          <FormControlLabel
+                            value="Shellac Mani / Basic Pedi Combo"
+                            control={<Radio onClick={choicesClick3} />}
+                            label="Shellac Mani / Basic Pedi Combo"
+                          />
+                          <FormControlLabel
+                            value="Shellac Mani / Express Pedi Combo"
+                            control={<Radio onClick={choicesClick3} />}
+                            label="Shellac Mani / Express Pedi Combo"
+                          />
+                          <FormControlLabel
+                            value="Little Princess Manicure and Pedicure"
+                            control={<Radio onClick={choicesClick3} />}
+                            label="Little Princess Manicure and Pedicure"
                           />
                         </RadioGroup>
                       </FormControl>
