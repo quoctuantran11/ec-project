@@ -18,12 +18,11 @@ app.use("/", require("./routes/cancelBooking"));
 app.use("/", require("./routes/route"));
 app.use("/", require("./routes/viewBooking"));
 
-if(process.env.NODE_ENV === 'production') {
-    app.use(express.static('frontend/build'))
-    app.get('*', (req,res) => {
-        res.sendFile(path.resolve(__dirname,'frontend','build','index.html'))
-    })
-}
+app.use(express.static(path.join(__dirname, 'frontend/build')))
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/frontend/build/index.html'))
+})
+
 
 app.listen(port, function () {
     console.log(`App deployed on port ${port}`);
